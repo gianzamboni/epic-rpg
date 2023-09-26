@@ -1,26 +1,46 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { Col, Container, Row } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ItemTypes, itemTypesAsArray } from '@/pages/types/ItemTypes'
 import ItemComponent from '@/pages/components/Item'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Item } from '@/pages/types/Item'
 import { Items } from '@/pages/types/Items'
 
 const initialInventory: Record<ItemTypes, Item> = itemTypesAsArray.reduce((final, item) => {
   return { ...final, [item]: new Items[item](0) };
-}, {})
+}, {} as Record<ItemTypes, Item>);
+
+function loadInventory() {
+  const value = localStorage.getItem("epic-rpg-inventory");
+  if (value === null) {
+    return initialInventory;
+  };
+  const parsed = JSON.parse(value);
+  return itemTypesAsArray.reduce((final, item) => {
+    return { ...final, [item]: new Items[item](parsed[item].amount) };
+  }, {} as Record<ItemTypes, Item>);
+}
+
+function saveInventory(inventory: Record<ItemTypes, Item>) {
+  const value = JSON.stringify(inventory);
+  localStorage.setItem("epic-rpg-inventory", value);
+}
 
 export default function Home() {
   const [inventory, setInventory] =
     useState<Record<ItemTypes, Item>>(initialInventory);
 
+  useEffect(() => {
+    const savedInventroy = loadInventory();
+    setInventory(savedInventroy);
+  }, []);
+
   const updateInventory = (item: Item) => {
-    console.log(item.name, inventory[item.name].toHyperLogs().amount);
-    setInventory({ ...inventory, [item.name]: item });
+    const newInventary = { ...inventory, [item.name]: item };
+    setInventory(newInventary);
+    saveInventory(newInventary);
   }
 
   const hyperLogsQ = (Object.keys(inventory) as ItemTypes[]).reduce((total, itemName) => {
@@ -47,7 +67,7 @@ export default function Home() {
               {itemTypesAsArray.map((name, index) => (
                 <ItemComponent
                   key={`item-${index}`}
-                  name={name}
+                  item={inventory[name]}
                   onChange={updateInventory}
                 />
               ))}
@@ -59,16 +79,8 @@ export default function Home() {
                   <p>El nombre del item</p>
                 </Row>
                 <Row>
-                  <span>Cantdad:</span>
+                  <span>Cantidad:</span>
                   <p>La cantidad de ese item que tienen en el inventario</p>
-                </Row>
-                <Row>
-                  <span>Guardar:</span>
-                  <p>
-                    La cantidad de ese item que no quieren convertir. Por ej, si
-                    quieren convertir rubies en logs para hacer hyperlogs paro
-                    necesitan quedarse con 4 rubies para alguna recete.{" "}
-                  </p>
                 </Row>
                 <Row>
                   <h2>Conversiones</h2>
