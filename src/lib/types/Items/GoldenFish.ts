@@ -1,6 +1,6 @@
-import { Item } from "@/pages/types/Item";
-import { Fish } from "@/pages/types/Items/Fish";
-import { ItemTypes } from "@/pages/types/ItemTypes";
+import { Item } from "@/lib/types/Item";
+import { Fish } from "@/lib/types/Items/Fish";
+import { ItemTypes } from "@/lib/types/ItemTypes";
 
 export class GoldenFish extends Item {
   constructor(amount: number) {

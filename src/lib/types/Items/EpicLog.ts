@@ -1,6 +1,6 @@
-import { ItemTypes } from "@/pages/types/ItemTypes";
-import { Item } from "@/pages/types/Item";
-import { SuperLog } from "@/pages/types/Items/SuperLog";
+import { ItemTypes } from "@/lib/types/ItemTypes";
+import { Item } from "@/lib/types/Item";
+import { SuperLog } from "@/lib/types/Items/SuperLog";
 
 export class EpicLog extends Item {
   constructor(amount: number) {

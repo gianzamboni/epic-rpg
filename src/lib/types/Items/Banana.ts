@@ -1,6 +1,6 @@
-import { Apple } from "@/pages/types/Items/Apple";
-import { Item } from "@/pages/types/Item";
-import { ItemTypes } from "@/pages/types/ItemTypes";
+import { Apple } from "@/lib/types/Items/Apple";
+import { Item } from "@/lib//types/Item";
+import { ItemTypes } from "@/lib/types/ItemTypes";
 
 export class Banana extends Item {
   constructor(amount: number) {

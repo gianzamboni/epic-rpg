@@ -2,11 +2,11 @@ import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { Col, Container, Row } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css";
-import { ItemTypes, itemTypesAsArray } from '@/pages/types/ItemTypes'
-import ItemComponent from '@/pages/components/Item'
+import { ItemTypes, itemTypesAsArray } from '@/lib/types/ItemTypes'
+import ItemComponent from '@/lib/components/Item'
 import { useEffect, useRef, useState } from 'react'
-import { Item } from '@/pages/types/Item'
-import { Items } from '@/pages/types/Items'
+import { Item } from '@/lib/types/Item'
+import { Items } from '@/lib/types/Items'
 
 const initialInventory: Record<ItemTypes, Item> = itemTypesAsArray.reduce((final, item) => {
   return { ...final, [item]: new Items[item](0) };

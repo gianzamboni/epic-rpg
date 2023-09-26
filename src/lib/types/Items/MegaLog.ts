@@ -1,6 +1,6 @@
-import { ItemTypes } from "@/pages/types/ItemTypes";
-import { Item } from "@/pages/types/Item";
-import { HyperLog } from "@/pages/types/Items/HyperLog";
+import { ItemTypes } from "@/lib/types/ItemTypes";
+import { Item } from "@/lib/types/Item";
+import { HyperLog } from "@/lib/types/Items/HyperLog";
 
 export class MegaLog extends Item {
   constructor(amount: number) {

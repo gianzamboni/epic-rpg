@@ -1,4 +1,4 @@
-import { ItemTypes } from "@/pages/types/ItemTypes";
+import { ItemTypes } from "@/lib/types/ItemTypes";
 
 type ConversionChain = Record<ItemTypes.HyperLog, "trade" | "dismantle" | "craft" | "toHyperLogs">;
 

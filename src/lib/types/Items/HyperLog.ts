@@ -1,5 +1,5 @@
-import { Item } from "@/pages/types/Item";
-import { ItemTypes } from "@/pages/types/ItemTypes";
+import { Item } from "@/lib/types/Item";
+import { ItemTypes } from "@/lib/types/ItemTypes";
 
 export class HyperLog extends Item {
   constructor(amount: number) {
