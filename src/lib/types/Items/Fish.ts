@@ -10,6 +10,6 @@ export class Fish extends Item {
   }
 
   trade() {
-    return new Log(this.amount * 2);
+    return new Log(this.amount * 3);
   }
 }

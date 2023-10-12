@@ -10,6 +10,6 @@ export class Ruby extends Item {
   }
 
   trade() {
-    return new Log(this.amount * 450);
+    return new Log(this.amount * 675);
   }
 }
