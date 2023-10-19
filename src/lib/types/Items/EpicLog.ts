@@ -10,6 +10,6 @@ export class EpicLog extends Item {
   }
 
   craft() {
-    return new SuperLog(this.amount / 10);
+    return new SuperLog(this.amount / 25);
   }
 }
