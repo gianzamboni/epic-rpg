@@ -10,6 +10,6 @@ export class Apple extends Item {
   }
 
   trade() {
-    return new Log(this.amount * 8);
+    return new Log(this.amount * 12);
   }
 }
